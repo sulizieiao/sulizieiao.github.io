@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 论文笔记_Video Classification with Channel-Separated Convolutional Networks
+date: 2020-02-03 
+tag: DL基础
 ---
 
 [paper](https://arxiv.org/abs/1904.02811)  [code](https://github.com/facebookresearch/VMZ)
@@ -23,7 +25,7 @@ CSN的resnet变体ir-CSN与ResNeXt类似，差异是：ir-CSN 使用depthwise co
 
 **group convolution:**  将卷积按通道划分为G组，只有同一个组内的通道才互相连接，极端情况是组数G=通道数，即每组只有一个通道（depthwise conv)。组卷积会大大减少参数量和模型计算量，但同时也会降低通道之间的交互。
 
-![image-20200208202603166](../images/image-20200208202603166.png)
+![image-20200208202603166](../images/posts/image-20200208202603166.png)
 
 (Xception, MobileNet是首先采用depthwise conv的网络)
 
@@ -31,9 +33,9 @@ CSN的resnet变体ir-CSN与ResNeXt类似，差异是：ir-CSN 使用depthwise co
 
 对于一层3D卷积：卷积核大小为：k\*k\*k，输入的时空域向量的像素数为：THW。则有：
 
-![image-20200208205732037](../images/image-20200208205732037.png)
+![image-20200208205732037](../images/posts/image-20200208205732037.png)
 
-其中：![image-20200208210123526](../images/image-20200208210123526.png)
+其中：![image-20200208210123526](../images/posts/image-20200208210123526.png)
 
 **channel separation （通道分离）：** 通道分离卷积网络（CSN）定义为：除conv1以外，所有卷积层，均是1\*1\*1的传统卷积 或 k\*k\*k的depthwise conv。CSN网络将通道信息交互和位置信息交互进行了分离，1\*1\*1的卷积层用来进行通道信息交互， k\*k\*k的depthwise conv用来进行位置信息的交互。
 
@@ -41,7 +43,7 @@ CSN的resnet变体ir-CSN与ResNeXt类似，差异是：ir-CSN 使用depthwise co
 
 根据通道分离的程度CSN可以分为：**interaction-preserved channel-separated network (ip-CSN)--图b)**和**interaction-reduced channel-separated network (ir-CSN)--图c)**。 ip-CSN 用一个depthwise conv和一个1\*1\*1的通道交换层替换传统的conv层，减少计算量但仍保留一定程度的通道交换。ir-CSN 直接用一个depthwise conv替换传统conv，本层中去掉了通道信息交换，只保留了位置信息交换。
 
-![image-20200208211704119](../images/image-20200208211704119.png)
+![image-20200208211704119](../images/posts/image-20200208211704119.png)
 
 ---
 
@@ -51,11 +53,11 @@ CSN的resnet变体ir-CSN与ResNeXt类似，差异是：ir-CSN 使用depthwise co
 
 **Resnet simple block：**如下图三种组合形式：a) 原始simple block；b) group conv simple block; c) depthwise conv simple block。（省略BN, ReLU, skip connections）
 
-![image-20200208212417054](../images/image-20200208212417054.png)
+![image-20200208212417054](../images/posts/image-20200208212417054.png)
 
 **Resnet bottleneck block：**如下图四种组合形式：a) 原始bottleneck block；b) group conv bottleneck block; c) depthwise conv bottleneck block；d) depthwise + group conv bottleneck block。（省略BN, ReLU, skip connections）
 
-<img src="../images/image-20200209123335493.png" alt="image-20200209123335493" style="zoom: 67%;" />![image-20200209235650237](../images/image-20200209235650237.png)
+<img src="../images/posts/image-20200209123335493.png" alt="image-20200209123335493" style="zoom: 67%;" />![image-20200209235650237](../images/posts/image-20200209235650237.png)
 
 设计理由：b) 是 ResNeXt block； c) 是b对应的depthwise 变体；d) 类似于ShuffleNet block。
 
@@ -69,29 +71,29 @@ CSN的resnet变体ir-CSN与ResNeXt类似，差异是：ir-CSN 使用depthwise co
 
 **基础网络：ResNet3D**
 
-<img src="../images/image-20200209235829588.png" alt="image-20200209235829588" style="zoom:80%;" />
+<img src="../images/posts/image-20200209235829588.png" alt="image-20200209235829588" style="zoom:80%;" />
 
 对应通道分离网络：
 
-<img src="../images/image-20200210000100237.png" alt="image-20200210000100237" style="zoom:67%;" />
+<img src="../images/posts/image-20200210000100237.png" alt="image-20200210000100237" style="zoom:67%;" />
 
 
 
 训练误差曲线：
 
-<img src="../images/image-20200210000225972.png" alt="image-20200210000225972" style="zoom:67%;" />
+<img src="../images/posts/image-20200210000225972.png" alt="image-20200210000225972" style="zoom:67%;" />
 
 ip-CSN因为通道信息交互少，因此训练误差大，但在测试集上表现更好。说明*ip-CSN具有正则化的作用，减少了过拟合。*
 
 **核心实验1结果：**
 
-![image-20200210000502926](../images/image-20200210000502926.png)
+![image-20200210000502926](../images/posts/image-20200210000502926.png)
 
 对比不同结构对应的精度。结论：**Bottleneck-D(ir-CSN)是计算量和精度的最好折中。**
 
 
 
-<img src="../images/image-20200210001123684.png" alt="image-20200210001123684" style="zoom:67%;" />
+<img src="../images/posts/image-20200210001123684.png" alt="image-20200210001123684" style="zoom:67%;" />
 
 
 

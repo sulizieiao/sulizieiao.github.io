@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Model Interpretation笔记
+date: 2020-01-20
+tag: DL基础
 ---
 
 > [引于blog1](http://blog.qure.ai/notes/visualizing_deep_learning), [blog2](http://blog.qure.ai/notes/deep-learning-visualization-gradient-based-methods)
@@ -23,7 +25,7 @@ title: Model Interpretation笔记
   + 拟合出 超像素集合 （S1, S2,...,Sn）与 患病预测P直接的关系。（eg: 第i个超像素集合是激活状态，则Si=1，否则Si=0， k个样本能得到k个方程，最终求解出P=a1\*S1+a2\*S2+....+an\*Sn）
   + 使用超像素集合Si对应的权重ai生成热图。（即权重大的超像素集合，对应的热图值大）
 
-![image-20200121095858882](../images/image-20200121095858882.png)
+![image-20200121095858882](../images/posts/image-20200121095858882.png)
 
 **存在问题**：1. 计算复杂。2. 常规区域扰动和超像素扰动都可能会导致预测值异常。比如：在X光片疾病检测中，通常在任意位置的阴影或者器官扩张都反映病患。如果使用扰动法，将直接引入黑块或阴影，不管扰动区域在哪个部位，都导致预测直接倾向于患病。
 
@@ -33,7 +35,7 @@ title: Model Interpretation笔记
   + 计算预测P对扰动值的导数作为敏感度
   + 结合k个样本的敏感度值，得到最终的热图值
 
-  ![Integrated Gradient Visualization](../images/ig.gif)
+  ![Integrated Gradient Visualization](../images/posts/ig.gif)
   
   可以看出当图像越接近原图时，对应的热图越能反映关键区域。（:thinking: 为什么不直接用原图求导数？​）
   

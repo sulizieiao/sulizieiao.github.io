@@ -3,9 +3,9 @@ title: eiao
 subtitle: 个人站
 description: 欢迎来到我的个人站~
 # 头像里面的标题
-avatarTitle: sulizieiao
+avatarTitle: ﾁﾝ　ｼｬｵ
 # 头像里面的描述
-avatarDesc: CV / 机器学习
+avatarDesc: CV / 日剧
 url: "https://sulizieiao.github.io"
 
 # 博客是否自动生成目录，false为不生成
@@ -14,7 +14,7 @@ enableToc: true
 # Comment
 comment:
     # livere: MTAyMC81MDk5NC8yNzQ3Ng  # https://www.livere.com
-    disqus: leopard
+    disqus: sulizieiao
     # uyan: 2143225  # 有言id,登录有言官网申请
 
 # Social

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: BatchNorm 笔记
-
+date: 2020-04-15 
+tag: DL基础
 ---
 
 ## BN算法
@@ -16,7 +17,7 @@ title: BatchNorm 笔记
 
 ### 具体实现：
 
-![image-20200415113907005](../images/image-20200415113907005.png)
+![image-20200415113907005](../images/posts/image-20200415113907005.png)
 
 这里的最后一步也称之为仿射(affine)，引入这一步的目的主要是设计一个通道，使得输出output至少能够回到输入input的状态，使得BN的引入至少不至于降低模型的表现，这是深度网络设计的一个套路。
 

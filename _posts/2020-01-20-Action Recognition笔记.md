@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Action Recognition笔记
+date: 2020-01-20
+tag: DL基础
 ---
 
 > [简译于blog](http://blog.qure.ai/notes/deep-learning-for-videos-action-recognition-review)
@@ -40,13 +42,13 @@ title: Action Recognition笔记
 
    [work2014](https://research.google.com/pubs/archive/42455.pdf) 探索了多种融合连续帧中时序信息的方法。先用预训练的2D卷积网络提取每一帧特征。然后将这些特征作为输入，训练一个融合网络，分别尝试了在融合网络的开始，最后，中间逐步进行各帧信息的融合。最后由融合网络得到多帧的行为预测。 实验结果：明显差于传统算法。理由：2D卷积网络没有捕获运动特征 + 数据集不够
 
-   ![单分支网络结构](../images/image-20200120111228965.png)
+   ![单分支网络结构](../images/posts/image-20200120111228965.png)
 
 2. **二分支网络**
 
    [work2014](https://arxiv.org/pdf/1406.2199.pdf) 基于单分支网络，将空间信息和时间信息分为两个分支。空间分支的输入是单帧图像，时间分支的输入是10帧连续光流。两个分支单独训练，最终用SVM进行融合。实验结果：比1有提升，但仍存在一些问题。eg; 时空域分开独立训练。
 
-   ![二分支网络结构](../images/image-20200120111052940.png)
+   ![二分支网络结构](../images/posts/image-20200120111052940.png)
 
 **存在问题**：
 
@@ -59,7 +61,7 @@ title: Action Recognition笔记
 
 基于两种基础算法，出现一系列算法，它们的推进过程如下：
 
-![行为识别算法推进过程](../images/image-20200120112400058.png)
+![行为识别算法推进过程](../images/posts/image-20200120112400058.png)
 
 1. **LRCN**
 
@@ -67,7 +69,7 @@ title: Action Recognition笔记
 
    使用CNN提取单帧特征，使用LSTM得到多帧（16帧）预测，平均多帧预测得到切片预测，平均切片预测得到视频预测。分别尝试了 RGB输入 和 光流输入。实验结果：加权的RGB输入和光流输入 结果最优。 后有算法通过降低图像清晰度，增大切片长度（60帧），提升了结果。存在问题：切片标签错误问题+无法捕获长期信息+光流计算和后续训练分离。
 
-   ![image-20200120115844289](../images/image-20200120115844289.png)
+   ![image-20200120115844289](../images/posts/image-20200120115844289.png)
 
 2.  **C3D**
 
@@ -95,7 +97,7 @@ title: Action Recognition笔记
 
    
 
-   ![image-20200120152901983](../images/image-20200120152901983.png)
+   ![image-20200120152901983](../images/posts/image-20200120152901983.png)
 
 5. **TSN**
 
@@ -105,7 +107,7 @@ title: Action Recognition笔记
 
    创新点：1. 在视频中采样离散的帧做为切片（更好地建立长期信息模型）2. 探索多种最终得到视频预测的方案，得到最优方案为： 如下图，平均法分别得到时域和空域scores; 加权融合时空域scores； softmax得到最终类别。
 
-   ![image-20200120154429311](../images/image-20200120154429311.png)
+   ![image-20200120154429311](../images/posts/image-20200120154429311.png)
 
    本文尝试解决两大挑战：小数据集过拟合问题； 长期模型建模问题。未解决问题：光流需要提前计算问题。
 
@@ -115,7 +117,7 @@ title: Action Recognition笔记
 
    **关键**：使用了可学习的特征聚合算法（VLAD）+ end-to-end 训练框架
 
-   ![image-20200120160018045](../images/image-20200120160018045.png)
+   ![image-20200120160018045](../images/posts/image-20200120160018045.png)
 
 ![image-20200120160447426](../images/image-20200120160447426.png)
 
@@ -129,7 +131,7 @@ title: Action Recognition笔记
 
    和基本二分支网络区别：1. 在时域CNN前加入提取光流的网络MotionNet, 因而时域输入从光流变成了多帧图。2. 增加了用于无监督训练MotionNet的multi-level loss。
 
-   ![image-20200120161524167](../images/image-20200120161524167.png)
+   ![image-20200120161524167](../images/posts/image-20200120161524167.png)
 
 8. **I3D**
 
@@ -147,11 +149,11 @@ title: Action Recognition笔记
 
    本文基于I3D，提出使用单分支的3D DenseNet based architecture替代双分支网络。
 
-   ![image-20200120163618380](../images/image-20200120163618380.png)
+   ![image-20200120163618380](../images/posts/image-20200120163618380.png)
 
    有监督迁移学习：用2D预训练模型和video,clip匹配标签，来训练3D的T3D网络参数。
 
-   ![image-20200120163935168](../images/image-20200120163935168.png)
+   ![image-20200120163935168](../images/posts/image-20200120163935168.png)
 
    
 

@@ -1,25 +1,26 @@
 ---
 layout: post
 title: 论文笔记_A Survey of Deep Facial Attribute Analysis(focus on FAE)
-typora-copy-images-to: ..\images
-typora-root-url: ..
+date: 2019-12-11 
+tag: face
 ---
+
+
 
 ### 背景
 
 **面部属性分析（FAA: facial attribute analysis)** 主要研究两大问题：
 1. **面部属性估计（FAE: facial attribute estimation)** ：识别给定图片中是否包含某个属性。目前方法1: Part-based FAE, 先定位属性位置，然后提取特定位置特征，最后进行属性预测。目前方法2：holistic FAE，关注属性之间的关系，用一个整体网络估计各个属性。
 2. **面部属性改造（FAM: facial attribute manipulation）**：生成/移除图片中特定属性。目前主要基于生成模型（GAN，VAE：variational autoencoders)。可分为：model-based methods 和 extra condition-based methods. 后者引入属性向量或参考图片作为条件输入，可以同时改变多个属性的状态。
-   
 
 FAE 和 FAM：
 
-![](/images/2019-12-16-15-05-43.png)
+![](../images/posts/2019-12-16-15-05-43.png)
 
-<img src="/images/2019-12-16-15-23-36.png" style="zoom:80%;" />
+<img src="/images/posts/2019-12-16-15-23-36.png" style="zoom:80%;" />
 
 ### FAA面临的挑战
-![](/images/2019-12-16-15-29-16.png)
+![](../images/posts/2019-12-16-15-29-16.png)
 
 #### FAE主要问题：
 1. 数据集是基于名人、新闻的，非真实场景
@@ -44,7 +45,7 @@ FAE 和 FAM：
 早期：CNN提特征+传统分类器分类（SVM，KNN）。近期：直接使用CNN。loss（Eulidean loss 和 sigmoid crossentropy loss:两者性能相似。 把属性分类作为回归问题：MSE loss）
 ### 数据集、评价指标
 数据集广泛使用的是：CelebA，LFW（LFWA）
-![](/images/2019-12-16-15-56-04.png)
+![](../images/posts/2019-12-16-15-56-04.png)
 
 评价指标：  
 Acc, ER     
