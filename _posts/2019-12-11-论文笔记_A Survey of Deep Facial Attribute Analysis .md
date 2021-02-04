@@ -5,11 +5,8 @@ date: 2019-12-11
 tag: face
 ---
 
-
-
-### 背景
-
-**面部属性分析（FAA: facial attribute analysis)** 主要研究两大问题：
+## 背景
+#### **面部属性分析（FAA: facial attribute analysis)** 主要研究两大问题：
 1. **面部属性估计（FAE: facial attribute estimation)** ：识别给定图片中是否包含某个属性。目前方法1: Part-based FAE, 先定位属性位置，然后提取特定位置特征，最后进行属性预测。目前方法2：holistic FAE，关注属性之间的关系，用一个整体网络估计各个属性。
 2. **面部属性改造（FAM: facial attribute manipulation）**：生成/移除图片中特定属性。目前主要基于生成模型（GAN，VAE：variational autoencoders)。可分为：model-based methods 和 extra condition-based methods. 后者引入属性向量或参考图片作为条件输入，可以同时改变多个属性的状态。
 
@@ -19,7 +16,7 @@ FAE 和 FAM：
 
 <img src="/images/posts/2019-12-16-15-23-36.png" style="zoom:80%;" />
 
-### FAA面临的挑战
+## FAA面临的挑战
 ![](../images/posts/2019-12-16-15-29-16.png)
 
 #### FAE主要问题：
@@ -34,7 +31,7 @@ FAE 和 FAM：
 
 **利用FAE和FAM的关系可以提升两者的性能**： FAM可以作为FAE的数据增强，FAE可以作为FAM的评价指标。
 
-### 整体框架
+## 整体框架
 #### 数据预处理
 人脸检测（+人脸关键点检测） 和人脸对齐  
 *近期趋势：将人脸检测和对齐和属性分析作为一个整体进行训练。*
@@ -43,7 +40,7 @@ FAE 和 FAM：
 测试集：crop10张，分别预测取平均
 #### FAE
 早期：CNN提特征+传统分类器分类（SVM，KNN）。近期：直接使用CNN。loss（Eulidean loss 和 sigmoid crossentropy loss:两者性能相似。 把属性分类作为回归问题：MSE loss）
-### 数据集、评价指标
+## 数据集、评价指标
 数据集广泛使用的是：CelebA，LFW（LFWA）
 ![](../images/posts/2019-12-16-15-56-04.png)
 
@@ -51,7 +48,7 @@ FAE 和 FAM：
 Acc, ER     
 BAcc, BER(用于不平衡数据集)
 **mean Average Precision(mAP)** 各个属性AP的均值。（广泛使用）
-### state-of-art FAE算法
+## state-of-art FAE算法
 #### part-based FAE
 *part-based deep FAE methods first locate the areas where facial attributes exist through localization mechanisms. Then, features corresponding to different attributes on each highlighted position can be extracted and further predicted with multiple at- tribute classifiers.*
 

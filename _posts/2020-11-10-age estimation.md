@@ -3,12 +3,10 @@ layout: post
 title: 论文笔记_age estimation----CORAL(2020)
 date: 2020-11-10
 tag: face
-
 ---
 
-## age estimation----CORAL(2020)
 
-### 经典算法
+## 经典算法
 
 1. OR-CNN（Ordinal Regression CNN， 2016)
 
@@ -31,7 +29,5 @@ tag: face
 - 在三个数据集MORPH-2，AFAD，CACD上，CORAL-CNN都优于CE-CNN（交叉熵分类loss）, OR-CNN。
 
 - 统计了OR-CNN在预测上的不一致性：在错判上的不一致程度要严重于正判，这也说明了一致性对于预测精度确实有作用。
-
-
 
 - Ranking-CNN 【

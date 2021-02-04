@@ -5,7 +5,7 @@ date: 2020-04-15
 tag: DL基础
 ---
 
-## BN算法
+## BN思想
 
 1. [ 基于mxnet的BN层原理和代码实现]([http://zh.gluon.ai/chapter_convolutional-neural-networks/batch-norm.html#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0](http://zh.gluon.ai/chapter_convolutional-neural-networks/batch-norm.html#从零开始实现))
 
@@ -15,7 +15,7 @@ tag: DL基础
 
 ---
 
-### 具体实现：
+## 具体实现：
 
 ![image-20200415113907005](../images/posts/image-20200415113907005.png)
 

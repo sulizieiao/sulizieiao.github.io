@@ -3,14 +3,9 @@ layout: post
 title: pytorch模型 转 MXNET 模型
 date: 2020-11-10 
 tag: 技术
-
 ---
 
-### pytorch模型 转 MXNET 模型
-
-
-
-#### step1： 按照pytorch的model.py写对应的MXNET的model.py （model_mxnet.py)
+## step1： 按照pytorch的model.py写对应的MXNET的model.py （model_mxnet.py)
 
 ​	**梳理网络结构，写成symbol格式：**
 
@@ -54,10 +49,7 @@ pool_stride = 1 ## mxnet 默认pooling的stride等于1
 ```
 
 
-
-
-
-#### step2: 转换模型参数，生成模型结构和对应参数文件 (model_mxnet-0000.params, model_mxnet-symbol.json)
+## step2: 转换模型参数，生成模型结构和对应参数文件 (model_mxnet-0000.params, model_mxnet-symbol.json)
 
 ​	**遍历每层参数，使用pth的参数，给mxnet的模型参数赋值**
 

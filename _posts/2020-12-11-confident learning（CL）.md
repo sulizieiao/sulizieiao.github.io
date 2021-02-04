@@ -3,18 +3,16 @@ layout: post
 title: confident learning (CL)
 date: 2020-12-11 
 tag: DL基础
-
 ---
 
-## confident learning（CL）
-
+## 库
 cleanlab:
 
 [github](https://github.com/cgnorthcutt/cleanlab), [paper](https://arxiv.org/pdf/1911.00068.pdf), [blog](https://l7.curtisnorthcutt.com/confident-learning)
 
 
 
-### 问题：
+## 问题：
 
 数据集普遍存在标签不准确的情况，以imagenet为例，有以下三种：
 
@@ -22,7 +20,7 @@ cleanlab:
 2. 本体论问题： 不同标签之间存在包含关系（泳镜，游泳运动员）
 3. 标签错误：数据集中的另一标签比标注的标签更适合某样本
 
-### confident learning 定义：
+## confident learning 定义：
 
 CL可认为是监督学习和弱监督学习的子领域，可用于：
 
@@ -46,7 +44,7 @@ CL直接估计 噪声标签（已知的）和真实标签（未知的）之间�
 2. 找到并剪枝标签有误的样本
 3. 用干净样本重新训练，更加估计的置信度对样本加权
 
-### CL 优势
+## CL 优势
 
 CL没有超参数，使用交叉验证得到置信度，有下面优势：
 
@@ -61,11 +59,11 @@ CL没有超参数，使用交叉验证得到置信度，有下面优势：
 - 可以扩展到多标签数据集
 - 可用于描述，查找和学习标签错误
 
-### CL实现：
+## CL实现：
 
 中心思想为：对于一个样本，在预测概率大于该类对应阈值的所有类中，选择其中预测概率最大的为该类真实类别。阈值是该类中所有样本的平均预测概率。用求出的真实类别标签和已知的噪声标签得到联合分布。
 
-### CL结果：
+## CL结果：
 
  CL 与最新的通过噪声标签的多类别学习方法 CIFAR-10 的比较。在高稀疏（见下一段）和 40% 和 70% 的标签噪声下，CL 的表现比谷歌开发的表现最好的 MentorNet，Co-Teaching 和 Facebook 研究团队开发的 Mix-up 方法提高了超过 30% 的学习水平。在信心学习之前，相关的方法对这一基准的改进要小得多（大约只提高了几个百分点）
 
